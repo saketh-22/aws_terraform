@@ -1,47 +1,47 @@
-# name: Terraform-AWS-Deploy
-# run-name: Deploy infrastructure on AWS 🚀
-# on:
-#   push:
-#     branches:
-#       - main
-# jobs:
-#   build:
-#     runs-on: ubuntu-latest
-#     steps:
+# # name: Terraform-AWS-Deploy
+# # run-name: Deploy infrastructure on AWS 🚀
+# # on:
+# #   push:
+# #     branches:
+# #       - main
+# # jobs:
+# #   build:
+# #     runs-on: ubuntu-latest
+# #     steps:
 
-#     - name: Checkout repository
-#       uses: actions/checkout@v4
+# #     - name: Checkout repository
+# #       uses: actions/checkout@v4
 
-#     - name: Setup Terraform
-#       uses: hashicorp/setup-terraform@v3
+# #     - name: Setup Terraform
+# #       uses: hashicorp/setup-terraform@v3
 
-#     - name: Terraform Init
-#       run: terraform init 
+# #     - name: Terraform Init
+# #       run: terraform init 
+# #       env:
+# #         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+# #         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+# #         AWS_DEFAULT_REGION: eu-north-1
+
+# #     - name: Plan Terraform
+# #       run: terraform plan
+# #       env:
+# #         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+# #         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+# #         AWS_DEFAULT_REGION: eu-north-1
+
+# #     - name: Apply Terraform
+# #       run: terraform apply -auto-approve
+# #       env:
+# #         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+# #         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+# #         AWS_DEFAULT_REGION: eu-north-1
+
+#     - name: Destroy Terraform
+#       run: terraform destroy -auto-approve
 #       env:
 #         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
 #         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 #         AWS_DEFAULT_REGION: eu-north-1
-
-#     - name: Plan Terraform
-#       run: terraform plan
-#       env:
-#         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-#         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-#         AWS_DEFAULT_REGION: eu-north-1
-
-#     - name: Apply Terraform
-#       run: terraform apply -auto-approve
-#       env:
-#         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-#         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-#         AWS_DEFAULT_REGION: eu-north-1
-
-    - name: Destroy Terraform
-      run: terraform destroy -auto-approve
-      env:
-        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        AWS_DEFAULT_REGION: eu-north-1
 
         
 
