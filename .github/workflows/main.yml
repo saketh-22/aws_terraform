@@ -25,6 +25,13 @@ jobs:
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v3
 
+    - name: Check for Deploy Flag
+      run: |
+        if [ ! -f deploy.flag ] || [ "$(cat deploy.flag)" != "true" ]; then
+          echo "Deployment flag not set to true. Exiting..."
+          exit 0
+        fi
+
     - name: Terraform Init
       run: terraform init 
     

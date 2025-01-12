@@ -22,5 +22,9 @@ jobs:
       - name: Set up Terraform
         uses: hashicorp/setup-terraform@v3
 
+      - name: Terraform Init
+        run: terraform init
+      # Terraform init is required to initiate the configuration at the backend "s3" bucket.
+
       - name: Terraform destroy
         run: terraform destroy --auto-approve
