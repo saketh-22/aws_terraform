@@ -1,47 +1,54 @@
-# # name: Terraform-AWS-Deploy
-# # run-name: Deploy infrastructure on AWS 🚀
-# # on:
-# #   push:
-# #     branches:
-# #       - main
-# # jobs:
-# #   build:
-# #     runs-on: ubuntu-latest
-# #     steps:
+name: Terraform-AWS-Deploy
+run-name: Deploy infrastructure on AWS 🚀
 
-# #     - name: Checkout repository
-# #       uses: actions/checkout@v4
+on:
+  push:
+    branches:
+      - main
 
-# #     - name: Setup Terraform
-# #       uses: hashicorp/setup-terraform@v3
+env:
+  TF_LOG: INFO #?
+  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+  AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
+  BUCKET_TF_STATE: ${{ secrets.BUCKET_TF_STATE }}
 
-# #     - name: Terraform Init
-# #       run: terraform init 
-# #       env:
-# #         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-# #         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-# #         AWS_DEFAULT_REGION: eu-north-1
+jobs:
+  build:
+    runs-on: ubuntu-latest
 
-# #     - name: Plan Terraform
-# #       run: terraform plan
-# #       env:
-# #         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-# #         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-# #         AWS_DEFAULT_REGION: eu-north-1
+    steps:
 
-# #     - name: Apply Terraform
-# #       run: terraform apply -auto-approve
-# #       env:
-# #         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-# #         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-# #         AWS_DEFAULT_REGION: eu-north-1
+    - name: Checkout repository
+      uses: actions/checkout@v4
 
-#     - name: Destroy Terraform
-#       run: terraform destroy -auto-approve
-#       env:
-#         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-#         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-#         AWS_DEFAULT_REGION: eu-north-1
+    - name: Setup Terraform
+      uses: hashicorp/setup-terraform@v3
+
+    - name: Terraform Init
+      run: terraform init 
+      
+    - name: Terraform format
+      id: fmt
+      run: terraform fmt -check
+    
+    - name: Terraform validate
+      id: validate
+      run: terraform validate
+
+    - name: Terraform Plan
+      id: plan
+      run: terraform plan -no-color -input=false
+
+    - name: Terraform Plan Status
+      if: steps.plan.outcome == 'failure'
+      run: exit 1
+
+    - name: Apply Terraform
+      if: steps.plan.outcome == 'success'
+      run: terraform apply -auto-approve -input=false
+      
+  
 
         
 

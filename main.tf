@@ -6,6 +6,12 @@ terraform {
       version = "~> 5.0"
     }
   }
+  backend "s3" {
+    bucket = "terraform-state-bucket-2000"
+    key = "terraform.tfstate"
+    dynamodb_table = "terraform-state-lock"
+    region = "eu-north-1"
+  }
 }
 
 
@@ -25,6 +31,3 @@ module "api_gateway" {
   lambda_name = module.lambda.lambda_name
   lambda_invoke_arn = module.lambda.lambda_invoke_arn
 }
-
-
-
