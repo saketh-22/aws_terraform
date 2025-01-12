@@ -1,7 +1,7 @@
 # **AWS Terraform Project** 
 
 <p align="center">
-  <img src="https://cdn.worldvectorlogo.com/logos/terraform-enterprise.svg" alt="Terraform" width="100" style="filter: invert(27%) sepia(32%) saturate(1928%) hue-rotate(251deg) brightness(86%) contrast(92%);">
+  <img src="https://cdn.worldvectorlogo.com/logos/terraform-enterprise.svg" alt="Terraform" width="100">
 </p>
 
 This repository showcases the amazing potential of **Infrastructure as Code (IaC)** with **Terraform**, enabling the deployment of a powerful and scalable backend for my personal website. 🚀
