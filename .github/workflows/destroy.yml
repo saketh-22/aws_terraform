@@ -2,8 +2,8 @@ name: Destroy Infrastructure
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: '0 0 * * *'  # Adjust the cron schedule as needed
+  # schedule:
+  #   - cron: '0 0 * * *'  # Adjust the cron schedule as needed
 
 env:
   TF_LOG: INFO
