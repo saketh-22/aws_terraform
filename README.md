@@ -22,6 +22,7 @@ This project is also a part of my contribution to the **Cloud Resume Challenge**
 ## **Project Architecture** 🏗️
 
 ### Deployed AWS Resources:
+![alt text](aws.png)
 1. **AWS Lambda Function**: Processes API requests.
 2. **DynamoDB Table**: Stores backend data for the application.
 3. **API Gateway**: Exposes APIs to integrate with the website.
@@ -29,6 +30,7 @@ This project is also a part of my contribution to the **Cloud Resume Challenge**
 ### Tools Used:
 - **Terraform**: Infrastructure as Code (IaC) tool for managing AWS resources.
 - **GitHub Actions**: CI/CD pipeline for automating Terraform workflows.
+
 
 ---
 
